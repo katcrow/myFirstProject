@@ -10,13 +10,13 @@ import '../../core/theme/app_images.dart';
 // import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingScreen extends StatelessWidget {
-  const OnboardingScreen({Key? key}) : super(key: key);
+  // pageController
+  OnboardingController _controller = Get.put(OnboardingController());
+
+  OnboardingScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    // pageController
-    OnboardingController _controller = Get.put(OnboardingController());
-
     return Scaffold(
       body: SafeArea(
         child: Container(
@@ -29,42 +29,52 @@ class OnboardingScreen extends StatelessWidget {
             ),
           ),
           child: PageView(
-            controller: _controller.pageController,
-            onPageChanged: (page) {
-              _controller.curPage.value = page;
-            },
-            children: [
-              OnboardTemplate(
-                pageController: _controller.pageController,
-                image: AppImages.onboardPageImage1,
-                subTitle1: CustomText.onboard_page_subtitle1_1,
-                subTitle2: CustomText.onboard_page_subtitle2_1,
-                isSmallImage: true,
-                onPressed: _controller.nextPage2, // 함수를 넘기기때문에 () 는 없이 보낸다.
-                skipButtonPressed: ()=> Get.offAllNamed("/login"),
+              controller: _controller.pageController,
+              onPageChanged: (page) {
+                _controller.curPage.value = page;
+              },
+              children: createOnboardTemplates(),
               ),
-              OnboardTemplate(
-                pageController: _controller.pageController,
-                image: AppImages.onboardPageImage2,
-                subTitle1: CustomText.onboard_page_subtitle1_1,
-                subTitle2: CustomText.onboard_page_subtitle2_1,
-                isSmallImage: false,
-                onPressed: _controller.nextPage2, // 함수를 넘기기때문에 () 는 없이 보낸다.
-                skipButtonPressed: ()=> Get.offAllNamed("/login"),
-              ),
-              OnboardTemplate(
-                pageController: _controller.pageController,
-                image: AppImages.onboardPageImage3,
-                subTitle1: CustomText.onboard_page_subtitle1_1,
-                subTitle2: CustomText.onboard_page_subtitle2_1,
-                isSmallImage: false,
-                onPressed: _controller.nextPage2, // 함수를 넘기기때문에 () 는 없이 보낸다.
-                skipButtonPressed: ()=> Get.offAllNamed("/login"),
-              ),
-            ],
-          ),
         ),
       ),
     );
+  }
+
+  List<Widget> createOnboardTemplates() {
+    List<Widget> result = [];
+
+    result.add(OnboardTemplate(
+      pageController: _controller.pageController,
+      image: AppImages.onboardPageImage1,
+      subTitle1: CustomText.onboard_page_subtitle1_1,
+      subTitle2: CustomText.onboard_page_subtitle2_1,
+      isSmallImage: true,
+      onPressed: _controller.nextPage2, // 함수를 넘기기때문에 () 는 없이 보낸다.
+      skipButtonPressed: () => Get.offAllNamed("/login"),
+    ));
+
+    result.add(OnboardTemplate(
+      pageController: _controller.pageController,
+      image: AppImages.onboardPageImage2,
+      subTitle1: CustomText.onboard_page_subtitle1_1,
+      subTitle2: CustomText.onboard_page_subtitle2_1,
+      isSmallImage: false,
+      onPressed: _controller.nextPage2, // 함수를 넘기기때문에 () 는 없이 보낸다.
+      skipButtonPressed: () => Get.offAllNamed("/login"),
+    ));
+
+    result.add(OnboardTemplate(
+      pageController: _controller.pageController,
+      image: AppImages.onboardPageImage3,
+      subTitle1: CustomText.onboard_page_subtitle1_1,
+      subTitle2: CustomText.onboard_page_subtitle2_1,
+      isSmallImage: false,
+      onPressed: _controller.nextPage2, // 함수를 넘기기때문에 () 는 없이 보낸다.
+      skipButtonPressed: () => Get.offAllNamed("/login"),
+    ));
+
+    _controller.lastPage.value = result.length - 1;
+
+    return result;
   }
 }

@@ -16,7 +16,7 @@ class OnboardTemplate extends StatelessWidget {
   final bool isSmallImage;
   final VoidCallback onPressed; // 버튼 클릭 시 이벤트
   final VoidCallback skipButtonPressed; // 스킵하자는 버튼 , 바로 로그인으로
-  late OnboardingController controller;
+  final OnboardingController controller = Get.find<OnboardingController>();
   OnboardTemplate(
       {Key? key,
       required this.pageController,
@@ -26,10 +26,7 @@ class OnboardTemplate extends StatelessWidget {
       required this.isSmallImage,
       required this.onPressed,
       required this.skipButtonPressed})
-      : super(key: key) {
-    controller = Get.find<OnboardingController>();
-    controller.lastPage.value = controller.lastPage.value + 1;
-  }
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

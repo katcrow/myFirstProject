@@ -12,7 +12,7 @@ class OnboardingController extends GetxController {
 
   // cur 와 last를 이용하여 작업
   RxInt curPage = 0.obs;
-  RxInt lastPage = RxInt(-1);
+  RxInt lastPage = 0.obs;
 
   @override
   void onReady() {
