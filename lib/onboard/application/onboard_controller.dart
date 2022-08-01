@@ -25,7 +25,7 @@ class OnboardingController extends GetxController {
       Get.offAllNamed("/login");
     } else {
       pageController.nextPage(
-        duration: Duration(seconds: 3),
+        duration: Duration(milliseconds: 500),
         curve: Curves.easeIn,
       );
     }

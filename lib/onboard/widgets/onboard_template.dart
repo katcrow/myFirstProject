@@ -1,7 +1,6 @@
 import 'package:first_mental_health/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
 // import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -11,6 +10,7 @@ class OnboardTemplate extends StatelessWidget {
   final String image; // 대표 이미지 경로
   final String subTitle1;
   final String subTitle2;
+  final int pageIndex;
   final bool isSmallImage;
   final VoidCallback onPressed; // 버튼 클릭 시 이벤트
   final VoidCallback skipButtonPressed; // 스킵하자는 버튼 , 바로 로그인으로
@@ -21,6 +21,7 @@ class OnboardTemplate extends StatelessWidget {
     required this.image,
     required this.subTitle1,
     required this.subTitle2,
+    required this.pageIndex,
     required this.isSmallImage,
     required this.onPressed,
     required this.skipButtonPressed,
@@ -120,9 +121,7 @@ class OnboardTemplate extends StatelessWidget {
           SizedBox(height: 50.h),
           //-- 하단 버튼
           GestureDetector(
-            onTap: () {
-              onPressed;
-            },
+            onTap: onPressed,
             child: Container(
               padding: EdgeInsets.all(15.0.h),
               width: MediaQuery.of(context).size.width,
@@ -132,7 +131,7 @@ class OnboardTemplate extends StatelessWidget {
               ),
               child: Center(
                 child: Text(
-                  pageController.page != 2 ? "다음 페이지" : "로그인",
+                  pageIndex != 2 ? "다음 페이지" : "로그인",
                   style: TextStyle(
                     fontWeight: FontWeight.normal,
                     fontSize: 16.sp,
