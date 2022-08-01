@@ -1,6 +1,7 @@
 import 'package:first_mental_health/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 // import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -37,9 +38,7 @@ class OnboardTemplate extends StatelessWidget {
         children: [
           //-- skip 영역
           GestureDetector(
-            onTap: () {
-              skipButtonPressed;
-            },
+            onTap: skipButtonPressed,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
