@@ -19,8 +19,8 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) => GetMaterialApp(
-        initialBinding: MainBinding(),
         debugShowCheckedModeBanner: false,
+        initialBinding: MainBinding(),
         title: 'My First Project',
         theme: ThemeData(
           primarySwatch: Colors.blue,

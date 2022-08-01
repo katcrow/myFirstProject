@@ -12,7 +12,7 @@ class WelcomeController extends GetxController {
   //-- 일정시간동안 잡아둬야 하기 때문에 async 처리 해야한다.
   void _departWelcome() async {
     await Future.delayed(Duration(seconds: 5));
-    //-- 4초 뒤 온보드 화면으로 라우팅한다.
+    //-- 5초 뒤 온보드 화면으로 라우팅한다.
     Get.offAllNamed(Routes.ONBOARD);
   }
 }

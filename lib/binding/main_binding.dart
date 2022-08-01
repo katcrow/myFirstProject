@@ -4,8 +4,17 @@ import 'package:get/get.dart';
 
 class MainBinding extends Bindings {
   @override
-  void dependencies() {
+  void dependencies() async {
+
+    await initializeFirebase();
+
     Get.put<WelcomeController>(WelcomeController());
     Get.put<OnboardingController>(OnboardingController());
+
+    // Get.lazyPut<OnboardingController>(()=>OnboardingController(), fenix: true);
+  }
+
+  Future initializeFirebase() async {
+    // Get.lazyPut<OnboardingController>(()=>OnboardingController(), fenix: true);
   }
 }

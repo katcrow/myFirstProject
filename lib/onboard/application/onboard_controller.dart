@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class OnboardingController extends GetxController {
-  // 페이지 컨트롤러, 초기화를 바로 못해서 그런가 late, onReady에서 하지 뭐
+  //--
   late PageController pageController;
 
   @override

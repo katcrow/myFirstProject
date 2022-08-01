@@ -20,7 +20,7 @@ class WelcomeScreen extends StatelessWidget {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 24.0.sp,
-                color: AppColors.mentalBrandLightColor,
+                color: AppColors.mentalBrandColor2,
               ),
             ),
             SizedBox(width: 10.0.w),
@@ -31,7 +31,7 @@ class WelcomeScreen extends StatelessWidget {
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 24.0.sp,
-                  color: AppColors.mentalBrandColor2,
+                  color: Colors.black45,
                 ),
               ),
             ),
