@@ -1,6 +1,8 @@
 import 'package:first_mental_health/core/theme/app_colors.dart';
+import 'package:first_mental_health/onboard/application/onboard_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
 // import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -11,27 +13,26 @@ class OnboardTemplate extends StatelessWidget {
   final String image; // 대표 이미지 경로
   final String subTitle1;
   final String subTitle2;
-  final int pageIndex;
   final bool isSmallImage;
   final VoidCallback onPressed; // 버튼 클릭 시 이벤트
   final VoidCallback skipButtonPressed; // 스킵하자는 버튼 , 바로 로그인으로
-
-  const OnboardTemplate({
-    Key? key,
-    required this.pageController,
-    required this.image,
-    required this.subTitle1,
-    required this.subTitle2,
-    required this.pageIndex,
-    required this.isSmallImage,
-    required this.onPressed,
-    required this.skipButtonPressed,
-  }) : super(key: key);
+  late OnboardingController controller;
+  OnboardTemplate(
+      {Key? key,
+      required this.pageController,
+      required this.image,
+      required this.subTitle1,
+      required this.subTitle2,
+      required this.isSmallImage,
+      required this.onPressed,
+      required this.skipButtonPressed})
+      : super(key: key) {
+    controller = Get.find<OnboardingController>();
+    controller.lastPage.value = controller.lastPage.value + 1;
+  }
 
   @override
   Widget build(BuildContext context) {
-    debugPrint("controller page : ${isSmallImage}");
-
     /// 전체는 컬럼으로 이루어져 있으며,
     /// 첫번재 로우 영역은 맨 끝으로 해서 스킵버튼 만든다.
     return Container(
@@ -133,16 +134,16 @@ class OnboardTemplate extends StatelessWidget {
                 color: AppColors.mentalBrandColor2.withOpacity(0.62),
                 borderRadius: BorderRadius.circular(15),
               ),
-              child: Center(
-                child: Text(
-                  pageIndex != 2 ? "다음 페이지" : "로그인",
+              child: Center(child: Obx(() {
+                return Text(
+                  controller.curPage != controller.lastPage ? "다음 페이지" : "로그인",
                   style: TextStyle(
                     fontWeight: FontWeight.normal,
                     fontSize: 16.sp,
                     color: AppColors.mentalBrandLightColor,
                   ),
-                ),
-              ),
+                );
+              })),
             ),
           )
         ],

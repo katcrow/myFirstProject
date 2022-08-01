@@ -30,15 +30,17 @@ class OnboardingScreen extends StatelessWidget {
           ),
           child: PageView(
             controller: _controller.pageController,
+            onPageChanged: (page) {
+              _controller.curPage.value = page;
+            },
             children: [
               OnboardTemplate(
                 pageController: _controller.pageController,
                 image: AppImages.onboardPageImage1,
                 subTitle1: CustomText.onboard_page_subtitle1_1,
                 subTitle2: CustomText.onboard_page_subtitle2_1,
-                pageIndex: 1,
                 isSmallImage: true,
-                onPressed: _controller.nextPage, // 함수를 넘기기때문에 () 는 없이 보낸다.
+                onPressed: _controller.nextPage2, // 함수를 넘기기때문에 () 는 없이 보낸다.
                 skipButtonPressed: ()=> Get.offAllNamed("/login"),
               ),
               OnboardTemplate(
@@ -46,9 +48,8 @@ class OnboardingScreen extends StatelessWidget {
                 image: AppImages.onboardPageImage2,
                 subTitle1: CustomText.onboard_page_subtitle1_1,
                 subTitle2: CustomText.onboard_page_subtitle2_1,
-                pageIndex: 2,
                 isSmallImage: false,
-                onPressed: _controller.nextPage, // 함수를 넘기기때문에 () 는 없이 보낸다.
+                onPressed: _controller.nextPage2, // 함수를 넘기기때문에 () 는 없이 보낸다.
                 skipButtonPressed: ()=> Get.offAllNamed("/login"),
               ),
               OnboardTemplate(
@@ -56,9 +57,8 @@ class OnboardingScreen extends StatelessWidget {
                 image: AppImages.onboardPageImage3,
                 subTitle1: CustomText.onboard_page_subtitle1_1,
                 subTitle2: CustomText.onboard_page_subtitle2_1,
-                pageIndex: 3,
                 isSmallImage: false,
-                onPressed: _controller.nextPage, // 함수를 넘기기때문에 () 는 없이 보낸다.
+                onPressed: _controller.nextPage2, // 함수를 넘기기때문에 () 는 없이 보낸다.
                 skipButtonPressed: ()=> Get.offAllNamed("/login"),
               ),
             ],
