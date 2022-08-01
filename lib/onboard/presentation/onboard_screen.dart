@@ -4,6 +4,8 @@ import 'package:first_mental_health/onboard/application/onboard_controller.dart'
 import 'package:first_mental_health/onboard/widgets/onboard_template.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../../core/theme/app_images.dart';
 // import 'package:flutter_screenutil/flutter_screenutil.dart';
 // import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -31,7 +33,7 @@ class OnboardingScreen extends StatelessWidget {
             children: [
               OnboardTemplate(
                 pageController: _controller.pageController,
-                image: "assets/images/logo.png",
+                image: AppImages.onboardPageImage1,
                 subTitle1: CustomText.onboard_page_subtitle1_1,
                 subTitle2: CustomText.onboard_page_subtitle2_1,
                 pageIndex: 1,
@@ -41,7 +43,7 @@ class OnboardingScreen extends StatelessWidget {
               ),
               OnboardTemplate(
                 pageController: _controller.pageController,
-                image: "assets/images/logo.png",
+                image: AppImages.onboardPageImage2,
                 subTitle1: CustomText.onboard_page_subtitle1_1,
                 subTitle2: CustomText.onboard_page_subtitle2_1,
                 pageIndex: 2,
@@ -51,7 +53,7 @@ class OnboardingScreen extends StatelessWidget {
               ),
               OnboardTemplate(
                 pageController: _controller.pageController,
-                image: "assets/images/logo.png",
+                image: AppImages.onboardPageImage3,
                 subTitle1: CustomText.onboard_page_subtitle1_1,
                 subTitle2: CustomText.onboard_page_subtitle2_1,
                 pageIndex: 3,

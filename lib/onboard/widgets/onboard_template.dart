@@ -1,6 +1,7 @@
 import 'package:first_mental_health/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 // import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -62,13 +63,16 @@ class OnboardTemplate extends StatelessWidget {
             // height: 300.h,
             child: Container(
               height: isSmallImage == true
-                  ? MediaQuery.of(context).size.height * 0.5
+                  ? MediaQuery.of(context).size.height * 0.2
                   : MediaQuery.of(context).size.height * 0.5,
+              width: isSmallImage == true
+                  ? MediaQuery.of(context).size.height * 0.2
+                  : MediaQuery.of(context).size.width * 0.85,
               // width: pageController.page == 0 ? 150.0.h : 300.h,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(image),
-                  fit: BoxFit.contain,
+                  fit: isSmallImage == true ? BoxFit.contain : BoxFit.cover,
                 ),
               ),
             ),
